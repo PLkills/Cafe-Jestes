@@ -1,0 +1,15 @@
+erDiagram
+  USUARIOS ||--o{ ENDERECOS : possui
+  USUARIOS ||--o{ PEDIDOS : realiza
+  USUARIOS ||--o{ AVALIACOES : escreve
+  USUARIOS ||--o{ PEDIDOS_FAVORITOS : salva
+  USUARIOS ||--o{ NOTIFICACOES : recebe
+  USUARIOS ||--o{ ENTREGAS : "entrega (entregador)"
+  CATEGORIAS ||--o{ PRODUTOS : classifica
+  PRODUTOS ||--o{ AVALIACOES : recebe
+  PRODUTOS ||--o{ ITENS_PEDIDO : compoe
+  PRODUTOS ||--o{ PEDIDOS_FAVORITOS : referencia
+  ENDERECOS ||--o{ PEDIDOS : destino
+  PEDIDOS ||--|{ ITENS_PEDIDO : contem
+  PEDIDOS ||--o| PAGAMENTOS : "e pago por"
+  PEDIDOS ||--o| ENTREGAS : gera

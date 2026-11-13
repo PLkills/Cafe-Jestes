@@ -1,0 +1,138 @@
+:root{--marrom:#4b2e1e;--creme:#f6efe7;--dourado:#c68b3e;--erro:#b3261e}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,Arial,sans-serif;background:var(--creme);color:#2b1d14}
+.topo{background:var(--marrom);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:.8rem 1rem;flex-wrap:wrap;gap:.5rem}
+.topo a{color:#fff;text-decoration:none;margin-left:1rem}
+.logo{font-weight:700;font-size:1.2rem;margin-left:0!important}
+.container{max-width:960px;margin:1.5rem auto;padding:0 1rem}
+.card{background:#fff;border-radius:10px;padding:1.5rem;max-width:420px;margin:0 auto;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+label{display:block;margin:.8rem 0 .2rem;font-weight:600}
+input,select,textarea{width:100%;padding:.6rem;border:1px solid #bba;border-radius:6px;font-size:1rem}
+button{margin-top:1rem;width:100%;padding:.7rem;background:var(--dourado);color:#fff;border:0;border-radius:6px;font-size:1rem;cursor:pointer}
+button:hover{background:#a9742f}
+.erro{background:#fde7e7;color:var(--erro);padding:.6rem;border-radius:6px}
+
+/* ---- Dia 2: vitrine, detalhe, admin ---- */
+.topo nav{display:flex;flex-wrap:wrap;gap:.2rem}
+.rodape{text-align:center;padding:1.5rem;color:#6b5a4e;font-size:.9rem}
+.sr{position:absolute;left:-9999px}
+.card-larga{max-width:640px}
+.filtros{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-bottom:1rem}
+.filtros input,.filtros select{width:auto;flex:1 1 180px}
+.filtros button{width:auto;margin:0}
+.limpar{color:var(--marrom)}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.produto{background:#fff;border-radius:10px;padding:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.1);position:relative}
+.produto a{color:inherit;text-decoration:none}
+.produto img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+.produto h2{font-size:1.1rem;margin:.5rem 0 .2rem}
+.cat{color:#7a6657;font-size:.85rem;margin:.1rem 0}
+.desc{font-size:.9rem;margin:.3rem 0}
+.preco strong{color:var(--marrom);font-size:1.15rem}
+.preco s{color:#999}
+.preco.grande strong{font-size:1.6rem}
+.selo{background:var(--dourado);color:#fff;font-size:.75rem;padding:.15rem .5rem;border-radius:999px;font-weight:700}
+.produto .selo{position:absolute;top:1.2rem;left:1.2rem}
+.estrelas{color:var(--dourado);letter-spacing:1px}
+.aval{font-size:.85rem;margin:.2rem 0}
+.vazio{text-align:center;color:#7a6657;padding:2rem}
+.detalhe{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;background:#fff;padding:1.2rem;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.detalhe img{width:100%;border-radius:10px;object-fit:cover}
+.ficha{list-style:none;padding:0}
+.ficha li{margin:.4rem 0}
+.barra{display:inline-block;width:100px;height:8px;background:#e5d8c8;border-radius:4px;margin-left:.5rem;vertical-align:middle}
+.barra i{display:block;height:100%;background:var(--marrom);border-radius:4px}
+.avaliacoes{margin-top:1.5rem}
+.comentario{background:#fff;border-radius:8px;padding:.8rem;margin:.6rem 0}
+.comentario small{color:#7a6657;margin-left:.5rem}
+.card-form{background:#fff;padding:1rem;border-radius:10px;max-width:480px;margin-top:1rem}
+.ok{background:#e6f4ea;color:#1e6b34;padding:.6rem;border-radius:6px}
+.nota{color:#7a6657;font-size:.9rem}
+.atalhos{padding-left:1.1rem}
+.barra-topo{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.btn{background:var(--dourado);color:#fff;padding:.6rem 1rem;border-radius:6px;text-decoration:none}
+.tabela-wrap{overflow-x:auto}
+.tabela{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden}
+.tabela th,.tabela td{padding:.6rem;text-align:left;border-bottom:1px solid #eee;font-size:.9rem}
+.tabela th{background:#efe3d3}
+.tabela tr.inativo{opacity:.55}
+.mini{width:56px;height:42px;object-fit:cover;border-radius:6px}
+.alerta{color:var(--erro);font-weight:700;font-size:.75rem}
+.acoes{display:flex;gap:.8rem;align-items:center}
+.acoes form{margin:0}
+button.link{background:none;color:#8a3b12;width:auto;margin:0;padding:0;text-decoration:underline}
+button.link:hover{background:none}
+.linha{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media (max-width:640px){.detalhe{grid-template-columns:1fr}.linha{grid-template-columns:1fr}}
+
+/* ---- Dia 3: carrinho ---- */
+.badge{background:var(--dourado);color:#fff;border-radius:999px;padding:0 .45rem;font-size:.75rem;font-weight:700}
+.pedido-form{margin-top:1rem}
+.carrinho-layout{display:grid;grid-template-columns:2fr 1fr;gap:1.2rem;align-items:start}
+.linha-item{display:grid;grid-template-columns:84px 1fr auto;gap:.8rem;background:#fff;border-radius:10px;padding:.8rem;margin-bottom:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.mini-g{width:84px;height:84px;object-fit:cover;border-radius:8px}
+.linha-item h2{font-size:1.05rem;margin:0 0 .2rem}
+.linha-item h2 a{color:inherit;text-decoration:none}
+.pers{font-size:.85rem;color:#5a4636;margin:.2rem 0;background:#f6efe7;padding:.25rem .5rem;border-radius:6px;display:inline-block}
+.acoes-item{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.qtd{display:flex;gap:.4rem;align-items:center}
+.qtd input{width:70px}
+button.sec{background:#fff;color:var(--marrom);border:1px solid var(--marrom);width:auto;margin:0;padding:.45rem .8rem}
+button.sec:hover{background:#f1e6d8}
+.sub{white-space:nowrap}
+.resumo dl{display:grid;grid-template-columns:1fr auto;gap:.4rem;margin:.5rem 0}
+.resumo dd{margin:0;text-align:right}
+.resumo .total{font-size:1.2rem;font-weight:700;border-top:1px solid #e5d8c8;padding-top:.5rem}
+.gratis{color:#1e6b34;font-weight:700}
+button:disabled{background:#c9b9a6;cursor:not-allowed}
+@media (max-width:760px){.carrinho-layout{grid-template-columns:1fr}.linha-item{grid-template-columns:64px 1fr}.sub{grid-column:2}.mini-g{width:64px;height:64px}}
+
+/* ---- Dia 4: checkout e pedidos ---- */
+.bloco{background:#fff;border:0;border-radius:10px;padding:1rem 1.2rem;margin:0 0 1rem;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+fieldset.bloco legend{font-weight:700;color:var(--marrom);padding:0 .4rem}
+.opcao{display:flex;gap:.6rem;align-items:flex-start;padding:.55rem;border:1px solid #e5d8c8;border-radius:8px;margin:.4rem 0;font-weight:400;cursor:pointer}
+.opcao input{width:auto;margin-top:.25rem}
+.sub-form{margin:.4rem 0 .6rem;padding:.2rem .2rem .2rem 1.6rem}
+.btn-bloco{display:block;text-align:center;margin-top:1rem;text-decoration:none}
+.mini-lista{list-style:none;padding:0;margin:.4rem 0}
+.mini-lista li{display:flex;justify-content:space-between;gap:.5rem;padding:.35rem 0;border-bottom:1px dashed #e5d8c8;font-size:.9rem}
+.mini-lista small{color:#7a6657}
+.status{display:inline-block;padding:.15rem .6rem;border-radius:999px;font-size:.8rem;font-weight:700;background:#efe3d3;color:var(--marrom)}
+.st-entregue{background:#e6f4ea;color:#1e6b34}.st-cancelado{background:#fde7e7;color:var(--erro)}.st-a_caminho{background:#e3eefc;color:#1a4a8a}
+.pg-aprovado{color:#1e6b34}.pg-pendente{color:#a15c00}.pg-recusado{color:var(--erro)}
+.pix{margin-top:1rem;text-align:center}
+.pix #qr{max-width:220px;margin:0 auto .6rem;background:#fff;padding:.4rem;border:1px solid #e5d8c8;border-radius:8px}
+.pix textarea{font-size:.75rem}
+.notifs{list-style:none;padding:0;margin:0}
+.notifs li{padding:.4rem 0;border-bottom:1px solid #eee}
+.notifs li.nova{font-weight:700}
+.notifs small{color:#7a6657;font-weight:400;margin-left:.4rem}
+
+/* ---- Dia 5: operacao e rastreamento ---- */
+.grade-op{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.op-card h2{font-size:1.05rem}
+.tabela-wrap{overflow-x:auto}
+.tabela{width:100%;border-collapse:collapse;font-size:.92rem}
+.tabela th,.tabela td{text-align:left;padding:.45rem .5rem;border-bottom:1px solid #e7d9c5;vertical-align:top}
+.inline-form{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center}
+.sr{position:absolute;left:-9999px}
+.btn-link{display:inline-block;padding:.4rem .8rem;border:1px solid var(--marrom);border-radius:6px;text-decoration:none;color:var(--marrom);font-weight:600}
+.mapa{width:100%;height:220px;border:0;border-radius:8px;margin:.5rem 0}
+.etapas{list-style:none;padding:0;margin:.6rem 0;display:flex;gap:.3rem;flex-wrap:wrap}
+.etapas li{flex:1 1 90px;text-align:center;font-size:.78rem;padding:.4rem .2rem;border-radius:6px;background:#efe3d3;color:#7a6a58;border-bottom:4px solid #d8c6ad}
+.etapas li.feito{background:#e6f4ea;color:#1e6b34;border-color:#2e8b4a}
+.etapas li.atual{background:#fff3d6;color:var(--marrom);font-weight:700;border-color:#c8841a}
+.st-em_preparo{background:#fff3d6;color:#8a5a00}.st-pronto{background:#e9e3fa;color:#4a2f8a}
+
+/* ---- Dia 6: relatorios ---- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1rem 0}
+.kpi{background:#fff;border:1px solid #e7d9c5;border-radius:10px;padding:.8rem;font-size:.85rem;color:#7a6a58}
+.kpi span{display:block;font-size:1.3rem;font-weight:700;color:var(--marrom)}
+.barra{display:block;height:10px;background:var(--dourado);border-radius:5px;min-width:2px}
+.peq{font-size:.8rem;margin-left:.5rem}
+.so-print{display:none}
+@media print{
+  .topo,footer,.no-print{display:none!important}
+  .so-print{display:block}
+  body{background:#fff}.bloco{break-inside:avoid;box-shadow:none}
+}

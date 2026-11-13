@@ -1,0 +1,15 @@
+# OPCAO B - projeto inteiro dentro da pasta do site (www/ ou public_html/)
+# Salve como ".htaccess" NA RAIZ (ao lado das pastas app, config, public, sql).
+RewriteEngine On
+
+# 1) Bloqueia pastas internas e arquivos sensiveis
+RewriteRule ^(app|config|sql|docs|deploy)(/|$) - [F,L]
+RewriteRule \.(sql|md|mermaid|example\.php)$ - [F,L]
+
+# 2) Serve o sistema direto em cafejester.com.br (sem /public/)
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule ^(.*)$ public/$1 [L]
+
+# 3) Forca HTTPS (ative so depois que o SSL estiver funcionando)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

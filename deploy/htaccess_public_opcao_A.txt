@@ -1,0 +1,9 @@
+# OPCAO A - conteudo de public/ direto na raiz do site
+# Salve como ".htaccess" dentro da raiz do site (junto com index.php).
+Options -Indexes
+DirectoryIndex index.php
+
+# Forca HTTPS (ative so depois que o SSL estiver funcionando)
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
