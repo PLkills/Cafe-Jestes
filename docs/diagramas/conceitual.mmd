@@ -1,0 +1,17 @@
+erDiagram
+  USUARIO ||--o{ ENDERECO : possui
+  USUARIO ||--o{ PEDIDO : realiza
+  USUARIO ||--o{ AVALIACAO : escreve
+  USUARIO ||--o{ NOTIFICACAO : recebe
+  USUARIO ||--o{ PEDIDO_FAVORITO : salva
+  USUARIO ||--o{ ENTREGA : "realiza (entregador)"
+  CATEGORIA ||--o{ PRODUTO : classifica
+  PRODUTO ||--o{ AVALIACAO : recebe
+  PRODUTO ||--o{ ITEM_PEDIDO : compoe
+  PRODUTO ||--o{ PEDIDO_FAVORITO : referencia
+  ENDERECO ||--o{ PEDIDO : "e destino de"
+  PEDIDO ||--|{ ITEM_PEDIDO : contem
+  PEDIDO ||--o| PAGAMENTO : "e pago por"
+  PEDIDO ||--o| ENTREGA : gera
+  INSUMO {
+  }
