@@ -136,3 +136,9 @@ fieldset.bloco legend{font-weight:700;color:var(--marrom);padding:0 .4rem}
   .so-print{display:block}
   body{background:#fff}.bloco{break-inside:avoid;box-shadow:none}
 }
+
+/* ---- ajustes apos teste em producao ---- */
+.barra-topo button{width:auto;margin:0;padding:.6rem 1rem}
+.acoes{flex-wrap:wrap}
+.acoes .inline-form{flex-wrap:nowrap;gap:.5rem}
+.acoes input{width:150px;margin:0}

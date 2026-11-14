@@ -13,7 +13,7 @@ class EntregadorController
         $u = Auth::require(['entregador']);
         $entregas = Pedido::doEntregador((int)$u['id']);
         $feitas = Pedido::entreguesDo((int)$u['id']);
-        $avisos = Notificacao::recentes((int)$u['id']);
+        $avisos = array_filter(Notificacao::recentes((int)$u['id']), fn($a) => !$a['lida']);   // so os novos
         Notificacao::marcarLidas((int)$u['id']);
         $msg = $_SESSION['flash'] ?? '';
         unset($_SESSION['flash']);

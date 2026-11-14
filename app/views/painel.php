@@ -22,6 +22,5 @@
       <li><a href="index.php?r=entregador/index">Minhas entregas</a></li>
     <?php endif; ?>
   </ul>
-  <p class="nota">Os demais módulos deste perfil entram nos próximos dias.</p>
 </section>
 <?php require __DIR__ . '/layout/footer.php'; ?>
