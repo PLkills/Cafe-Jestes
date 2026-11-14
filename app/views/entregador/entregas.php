@@ -23,7 +23,7 @@
       <iframe class="mapa" title="Mapa do endereço do pedido <?= (int)$p['id'] ?>" loading="lazy" src="<?= e(url_mapa_embed($p)) ?>"></iframe>
     <?php endif; ?>
     <?php if ($p['status'] === 'pronto' || $p['status'] === 'a_caminho'): ?>
-      <form method="post" action="index.php?r=entregador/avancar">
+      <form method="post" action="index.php?r=entregador/avancar"<?= $p['status'] === 'a_caminho' ? ' onsubmit="return confirm(\'Confirmar que o pedido #' . (int)$p['id'] . ' foi entregue ao cliente?\');"' : '' ?>>
         <input type="hidden" name="csrf" value="<?= e(Auth::csrfToken()) ?>">
         <input type="hidden" name="id" value="<?= (int)$p['id'] ?>">
         <input type="hidden" name="de" value="<?= e($p['status']) ?>">

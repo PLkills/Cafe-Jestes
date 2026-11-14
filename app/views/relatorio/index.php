@@ -25,7 +25,7 @@ $qs = 'de=' . urlencode($de) . '&ate=' . urlencode($ate); ?>
   <table class="tabela"><thead><tr><th>Dia</th><th>Pedidos</th><th>Total</th><th class="no-print"></th></tr></thead><tbody>
   <?php foreach ($dias as $d): ?>
     <tr><td><?= e(date('d/m/Y', strtotime($d['dia']))) ?></td><td><?= (int)$d['pedidos'] ?></td><td><?= moeda($d['total']) ?></td>
-        <td class="no-print"><span class="barra" style="width:<?= $max > 0 ? round($d['total'] / $max * 100) : 0 ?>%"></span></td></tr>
+        <td class="no-print"><span class="barra-rel" style="width:<?= $max > 0 ? round($d['total'] / $max * 100) : 0 ?>%"></span></td></tr>
   <?php endforeach; ?></tbody></table>
 <?php endif; ?></div>
 

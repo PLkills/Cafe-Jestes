@@ -9,8 +9,7 @@
     <p><?= nl2br(e($p['descricao'])) ?></p>
     <ul class="ficha">
       <li><strong>Origem do grão:</strong> <?= e($p['origem_grao'] ?: 'Não informada') ?></li>
-      <li><strong>Intensidade:</strong> <?= (int)$p['intensidade'] ?>/5
-        <span class="barra"><i style="width:<?= (int)$p['intensidade'] * 20 ?>%"></i></span></li>
+      <li><strong>Força do grão:</strong> <?= (int)$p['intensidade'] ?>/5 <?= graos_intensidade((int)$p['intensidade']) ?></li>
       <li><strong>Disponível:</strong> <?= $p['estoque'] > 0 ? 'Em estoque' : 'Esgotado' ?></li>
     </ul>
     <p class="preco grande">
@@ -24,16 +23,16 @@
         <h3>Monte o seu pedido</h3>
         <input type="hidden" name="csrf" value="<?= e(Auth::csrfToken()) ?>">
         <input type="hidden" name="produto_id" value="<?= (int)$p['id'] ?>">
-        <?php if (personalizavel($p)): ?>
+        <?php if (personalizavel($p)): $lp = leite_padrao($p); ?>
           <label for="tipo_leite">Tipo de leite</label>
           <select id="tipo_leite" name="tipo_leite">
-            <?php foreach (OPCOES_LEITE as $v => $t): ?><option value="<?= e($v) ?>"><?= e($t) ?></option><?php endforeach; ?>
+            <?php foreach (OPCOES_LEITE as $v => $t): ?><option value="<?= e($v) ?>" <?= $v === $lp ? 'selected' : '' ?>><?= e($t) ?></option><?php endforeach; ?>
           </select>
           <label for="acucar">Açúcar</label>
           <select id="acucar" name="acucar">
             <?php foreach (OPCOES_ACUCAR as $v => $t): ?><option value="<?= e($v) ?>" <?= $v === 'normal' ? 'selected' : '' ?>><?= e($t) ?></option><?php endforeach; ?>
           </select>
-          <label for="intensidade_p">Intensidade</label>
+          <label for="intensidade_p">Intensidade do preparo</label>
           <select id="intensidade_p" name="intensidade">
             <?php foreach (OPCOES_INTENSIDADE as $v => $t): ?><option value="<?= e($v) ?>" <?= $v === 'media' ? 'selected' : '' ?>><?= e($t) ?></option><?php endforeach; ?>
           </select>
@@ -71,12 +70,15 @@
       <h3><?= $minha ? 'Atualizar minha avaliação' : 'Avaliar este café' ?></h3>
       <input type="hidden" name="csrf" value="<?= e(Auth::csrfToken()) ?>">
       <input type="hidden" name="produto_id" value="<?= (int)$p['id'] ?>">
-      <label for="nota">Nota</label>
-      <select id="nota" name="nota" required>
+      <fieldset class="nota-estrelas">
+        <legend>Nota</legend>
+<div class="estr">
         <?php for ($i = 5; $i >= 1; $i--): ?>
-          <option value="<?= $i ?>" <?= ($minha['nota'] ?? 5) == $i ? 'selected' : '' ?>><?= $i ?> <?= $i == 1 ? 'estrela' : 'estrelas' ?></option>
+          <input type="radio" id="nota<?= $i ?>" name="nota" value="<?= $i ?>" <?= (int)($minha['nota'] ?? 5) === $i ? 'checked' : '' ?> required>
+          <label for="nota<?= $i ?>" title="<?= $i ?> <?= $i == 1 ? 'estrela' : 'estrelas' ?>"><span class="sr"><?= $i ?> <?= $i == 1 ? 'estrela' : 'estrelas' ?></span>&#9733;</label>
         <?php endfor; ?>
-      </select>
+</div>
+      </fieldset>
       <label for="comentario">Comentário (opcional)</label>
       <textarea id="comentario" name="comentario" rows="3" maxlength="500"><?= e($minha['comentario'] ?? '') ?></textarea>
       <button type="submit">Enviar avaliação</button>

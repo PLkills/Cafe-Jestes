@@ -37,3 +37,18 @@ do cartao guarda-se apenas os 4 ultimos digitos. A biblioteca `public/js/qrcode.
 - **Backup** (`?r=backup/index`, so administrador): baixa .sql com os dados (INSERTs). Restaurar = `sql/schema.sql` + backup no phpMyAdmin.
 - Conexao MySQL agora fixa `time_zone = -03:00` para casar com o PHP.
 - Sem alteracao de banco: basta enviar os arquivos.
+
+## Dia 7 — Ajustes após o teste dos colegas
+
+Correções feitas a partir da lista de problemas e melhorias levantada nos testes:
+
+- **Acentuação** dos dados de exemplo (categorias, produtos, insumos, cidade, comentários). Para o banco que já está no ar: executar `sql/dia7_acentos.sql` no phpMyAdmin (só ajusta textos; não apaga pedidos nem contas). `schema.sql` e `dia2_avaliacoes.sql` já nascem corretos.
+- **Vitrine:** ordenação (menor/maior preço, melhor avaliação), contagem de produtos encontrados.
+- **Detalhe do produto:** indicador visual de força do grão; "Grãos" não mostram leite/açúcar; leite padrão "Sem leite" para espresso e gelados; avaliação por estrelas clicáveis (também na nota da entrega).
+- **Carrinho:** botões − e + de quantidade, confirmação ao remover.
+- **Celular:** menu com botão (hambúrguer) e atalho do carrinho, alvos de toque ≥ 44 px, "Meus pedidos" em cartões, mapa não prende a rolagem em telas de toque.
+- **Telas de operação** (barista, gestão, entregador): atualização automática a cada 30 s sem recarregar e sem interromper quem está preenchendo algo; confirmação antes de marcar "a caminho".
+- **Rodapé:** contato, Política de Privacidade (`?r=home/privacidade`) e link do GitHub. Preencher e-mail/WhatsApp reais em `config/loja.php` (`contato`).
+- Correção de CSS: a barra dos relatórios (`.barra-rel`) não conflita mais com a barra de intensidade.
+
+Verificação: 133 testes automatizados de ponta a ponta continuam passando, mais checagens das telas novas.

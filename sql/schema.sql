@@ -161,24 +161,24 @@ CREATE TABLE notificacoes (
 INSERT INTO usuarios (nome,email,senha_hash,telefone,perfil) VALUES
 ('Administrador','admin@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000001','administrador'),
 ('Gerente Maria','gerente@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000002','gerente'),
-('Barista Joao','barista@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000003','barista'),
+('Barista João','barista@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000003','barista'),
 ('Entregador Carlos','entregador@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000004','entregador'),
 ('Entregadora Ana','entregador2@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000005','entregador'),
 ('Cliente Teste','cliente@cafeteria.com','$2y$10$MdSkZicneKF6WjsXzw9fyeE2Qu21t3lZo0VAw031B./HlOvuT9IOK','11900000006','cliente');
 
-INSERT INTO categorias (nome) VALUES ('Espresso'),('Cappuccino'),('Graos'),('Gelados');
+INSERT INTO categorias (nome) VALUES ('Espresso'),('Cappuccino'),('Grãos'),('Gelados');
 
 INSERT INTO produtos (categoria_id,nome,descricao,origem_grao,intensidade,preco,preco_promocional,imagem,estoque) VALUES
-(1,'Espresso Classico','Cafe curto, encorpado, com crema dourada.','Cerrado Mineiro',5,8.50,NULL,'espresso.jpg',100),
+(1,'Espresso Clássico','Café curto, encorpado, com crema dourada.','Cerrado Mineiro',5,8.50,NULL,'espresso.jpg',100),
 (1,'Espresso Duplo','Dose dupla para quem precisa de energia.','Cerrado Mineiro',5,12.00,10.00,'espresso-duplo.jpg',100),
 (2,'Cappuccino Cremoso','Espresso, leite vaporizado e espuma aveludada.','Sul de Minas',3,14.00,NULL,'cappuccino.jpg',80),
-(2,'Cappuccino de Canela','Cappuccino com toque de canela do Ceilao.','Sul de Minas',3,15.50,NULL,'cappuccino-canela.jpg',80),
-(3,'Graos Bourbon Amarelo 250g','Notas de caramelo e chocolate, torra media.','Mogiana',3,38.00,34.00,'bourbon.jpg',40),
-(3,'Graos Gesha 250g','Edicao limitada, floral e citrico.','Panama',2,89.90,NULL,'gesha.jpg',15),
-(4,'Cold Brew','Extracao a frio por 18 horas.','Etiopia',3,16.00,NULL,'coldbrew.jpg',60);
+(2,'Cappuccino de Canela','Cappuccino com toque de canela do Ceilão.','Sul de Minas',3,15.50,NULL,'cappuccino-canela.jpg',80),
+(3,'Grãos Bourbon Amarelo 250g','Notas de caramelo e chocolate, torra média.','Mogiana',3,38.00,34.00,'bourbon.jpg',40),
+(3,'Grãos Gesha 250g','Edição limitada, floral e cítrico.','Panamá',2,89.90,NULL,'gesha.jpg',15),
+(4,'Cold Brew','Extração a frio por 18 horas.','Etiópia',3,16.00,NULL,'coldbrew.jpg',60);
 
 INSERT INTO insumos (nome,unidade,quantidade,minimo) VALUES
-('Graos Bourbon','kg',25.00,5.00),('Graos Gesha','kg',4.00,2.00),('Leite integral','l',40.00,10.00),('Leite vegetal','l',15.00,5.00);
+('Grãos Bourbon','kg',25.00,5.00),('Grãos Gesha','kg',4.00,2.00),('Leite integral','l',40.00,10.00),('Leite vegetal','l',15.00,5.00);
 
 INSERT INTO enderecos (usuario_id,cep,logradouro,numero,bairro,cidade,uf,instrucoes) VALUES
-(6,'01310-100','Avenida Paulista','1000','Bela Vista','Sao Paulo','SP','Deixar na portaria');
+(6,'01310-100','Avenida Paulista','1000','Bela Vista','São Paulo','SP','Deixar na portaria');

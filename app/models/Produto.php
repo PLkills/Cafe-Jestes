@@ -9,13 +9,19 @@ class Produto
         FROM produtos p JOIN categorias c ON c.id = p.categoria_id";
 
     /** Vitrine: so ativos e com estoque. Filtros opcionais por categoria e busca. */
-    public static function vitrine(?int $cat, string $busca = ''): array
+    public static function vitrine(?int $cat, string $busca = '', string $ordem = ''): array
     {
         $sql = self::SELECT . ' WHERE p.ativo = 1 AND p.estoque > 0';
         $par = [];
         if ($cat) { $sql .= ' AND p.categoria_id = ?'; $par[] = $cat; }
         if ($busca !== '') { $sql .= ' AND p.nome LIKE ?'; $par[] = '%' . $busca . '%'; }
-        $sql .= ' ORDER BY (p.preco_promocional IS NOT NULL) DESC, p.nome';
+        $media = '(SELECT AVG(a.nota) FROM avaliacoes a WHERE a.produto_id = p.id)';
+        $sql .= match ($ordem) {
+            'preco_asc'  => ' ORDER BY COALESCE(p.preco_promocional, p.preco) ASC, p.nome',
+            'preco_desc' => ' ORDER BY COALESCE(p.preco_promocional, p.preco) DESC, p.nome',
+            'avaliacao'  => " ORDER BY COALESCE($media, 0) DESC, p.nome",
+            default      => ' ORDER BY (p.preco_promocional IS NOT NULL) DESC, p.nome',
+        };
         $st = Database::conn()->prepare($sql);
         $st->execute($par);
         return $st->fetchAll();

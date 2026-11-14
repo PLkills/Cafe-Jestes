@@ -24,10 +24,12 @@
             <input type="hidden" name="csrf" value="<?= e(Auth::csrfToken()) ?>">
             <input type="hidden" name="chave" value="<?= e($i['chave']) ?>">
             <label class="sr" for="q<?= e($i['chave']) ?>">Quantidade</label>
+            <button type="button" class="qtd-btn" data-delta="-1" aria-label="Diminuir quantidade">&minus;</button>
             <input id="q<?= e($i['chave']) ?>" type="number" name="quantidade" min="0" max="<?= (int)config_loja()['max_por_item'] ?>" value="<?= (int)$i['quantidade'] ?>">
+            <button type="button" class="qtd-btn" data-delta="1" aria-label="Aumentar quantidade">+</button>
             <button type="submit" class="sec">Atualizar</button>
           </form>
-          <form method="post" action="index.php?r=carrinho/remover">
+          <form method="post" action="index.php?r=carrinho/remover" onsubmit="return confirm('Remover este item do carrinho?');">
             <input type="hidden" name="csrf" value="<?= e(Auth::csrfToken()) ?>">
             <input type="hidden" name="chave" value="<?= e($i['chave']) ?>">
             <button type="submit" class="link">Remover</button>
@@ -58,4 +60,5 @@
   </aside>
 </div>
 <?php endif; ?>
+<script src="js/carrinho.js"></script>
 <?php require __DIR__ . '/../layout/footer.php'; ?>

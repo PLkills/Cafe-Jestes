@@ -8,6 +8,11 @@ class HomeController
         header('Location: index.php?r=produto/index');
     }
 
+    public function privacidade(): void
+    {
+        require __DIR__ . '/../views/privacidade.php';
+    }
+
     public function painel(): void
     {
         $u = Auth::require();

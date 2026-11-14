@@ -1,4 +1,4 @@
-<?php $titulo = 'Vitrine'; require __DIR__ . '/../layout/header.php'; ?>
+<?php $titulo = 'Vitrine'; $descricao = 'Cafés gourmet, cappuccinos, cold brew e grãos especiais com entrega em casa. Peça online no Café Jester.'; require __DIR__ . '/../layout/header.php'; ?>
 <h1>Nossos cafés</h1>
 
 <form class="filtros" method="get" action="index.php">
@@ -12,13 +12,21 @@
       <option value="<?= (int)$c['id'] ?>" <?= $cat === (int)$c['id'] ? 'selected' : '' ?>><?= e($c['nome']) ?></option>
     <?php endforeach; ?>
   </select>
+  <label for="ordem" class="sr">Ordenar por</label>
+  <select id="ordem" name="ordem">
+    <option value="">Ordenar: destaques</option>
+    <option value="preco_asc" <?= $ordem === 'preco_asc' ? 'selected' : '' ?>>Menor preço</option>
+    <option value="preco_desc" <?= $ordem === 'preco_desc' ? 'selected' : '' ?>>Maior preço</option>
+    <option value="avaliacao" <?= $ordem === 'avaliacao' ? 'selected' : '' ?>>Melhor avaliados</option>
+  </select>
   <button type="submit">Filtrar</button>
-  <?php if ($cat || $busca !== ''): ?><a class="limpar" href="index.php?r=produto/index">Limpar filtro</a><?php endif; ?>
+  <?php if ($cat || $busca !== '' || $ordem !== ''): ?><a class="limpar" href="index.php?r=produto/index">Limpar filtro</a><?php endif; ?>
 </form>
 
 <?php if (!$produtos): ?>
   <p class="vazio">Nenhum café encontrado para este filtro.</p>
 <?php else: ?>
+<p class="nota" role="status"><?= count($produtos) ?> <?= count($produtos) === 1 ? 'produto encontrado' : 'produtos encontrados' ?></p>
 <div class="grade">
   <?php foreach ($produtos as $p): ?>
   <article class="produto">

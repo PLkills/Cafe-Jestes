@@ -12,7 +12,8 @@ class ProdutoController
         $cat = isset($_GET['cat']) && ctype_digit($_GET['cat']) ? (int)$_GET['cat'] : null;
         $busca = trim($_GET['q'] ?? '');
         $categorias = Categoria::todas();
-        $produtos = Produto::vitrine($cat, $busca);
+        $ordem = in_array($_GET['ordem'] ?? '', ['preco_asc', 'preco_desc', 'avaliacao'], true) ? $_GET['ordem'] : '';
+        $produtos = Produto::vitrine($cat, $busca, $ordem);
         require __DIR__ . '/../views/produtos/vitrine.php';
     }
 
@@ -27,6 +28,7 @@ class ProdutoController
         $avaliacoes = Avaliacao::recentes($id);
         $u = Auth::user();
         $minha = ($u && $u['perfil'] === 'cliente') ? Avaliacao::doUsuario($id, (int)$u['id']) : null;
+        $descricao = mb_strimwidth($p['nome'] . ' — ' . preg_replace('/\s+/', ' ', (string)$p['descricao']), 0, 158, '...');
         $msg = $_SESSION['flash'] ?? '';
         unset($_SESSION['flash']);
         require __DIR__ . '/../views/produtos/detalhe.php';

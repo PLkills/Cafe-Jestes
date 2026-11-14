@@ -35,11 +35,15 @@
         <form method="post" action="index.php?r=pedido/avaliarentrega">
           <input type="hidden" name="csrf" value="<?= e(Auth::csrfToken()) ?>">
           <input type="hidden" name="id" value="<?= (int)$p['id'] ?>">
-          <label for="nota">Nota</label>
-          <select name="nota" id="nota" required>
-            <option value="">Escolha...</option>
-            <?php for ($n = 5; $n >= 1; $n--): ?><option value="<?= $n ?>"><?= $n ?> <?= $n === 1 ? 'estrela' : 'estrelas' ?></option><?php endfor; ?>
-          </select>
+          <fieldset class="nota-estrelas">
+            <legend>Nota da entrega</legend>
+<div class="estr">
+            <?php for ($n = 5; $n >= 1; $n--): ?>
+              <input type="radio" id="nota<?= $n ?>" name="nota" value="<?= $n ?>" required>
+              <label for="nota<?= $n ?>" title="<?= $n ?> <?= $n === 1 ? 'estrela' : 'estrelas' ?>"><span class="sr"><?= $n ?> <?= $n === 1 ? 'estrela' : 'estrelas' ?></span>&#9733;</label>
+            <?php endfor; ?>
+</div>
+          </fieldset>
           <label for="comentario">Comentário (opcional)</label>
           <input type="text" name="comentario" id="comentario" maxlength="255">
           <button type="submit">Enviar avaliação</button>

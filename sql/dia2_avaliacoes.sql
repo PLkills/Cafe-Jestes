@@ -12,10 +12,10 @@ INSERT IGNORE INTO usuarios (nome,email,senha_hash,telefone,perfil) VALUES
 -- Avaliacoes de exemplo (para a vitrine mostrar medias)
 INSERT IGNORE INTO avaliacoes (produto_id,usuario_id,nota,comentario)
 SELECT p.id, u.id, v.nota, v.comentario FROM (
-  SELECT 'Espresso Classico' pn,'cliente@cafeteria.com' em,5 nota,'Encorpado e com crema perfeita.' comentario UNION ALL
-  SELECT 'Espresso Classico','luciana@exemplo.com',4,'Muito bom, so achei um pouco forte.' UNION ALL
+  SELECT 'Espresso Clássico' pn,'cliente@cafeteria.com' em,5 nota,'Encorpado e com crema perfeita.' comentario UNION ALL
+  SELECT 'Espresso Clássico','luciana@exemplo.com',4,'Muito bom, só achei um pouco forte.' UNION ALL
   SELECT 'Cappuccino Cremoso','cliente@cafeteria.com',5,'Espuma aveludada, meu favorito.' UNION ALL
   SELECT 'Cappuccino Cremoso','rafael@exemplo.com',4,'Cremoso e equilibrado.' UNION ALL
   SELECT 'Cold Brew','luciana@exemplo.com',5,'Suave e refrescante.' UNION ALL
-  SELECT 'Graos Bourbon Amarelo 250g','rafael@exemplo.com',5,'Notas de chocolate incriveis.'
+  SELECT 'Grãos Bourbon Amarelo 250g','rafael@exemplo.com',5,'Notas de chocolate incríveis.'
 ) v JOIN produtos p ON p.nome = v.pn JOIN usuarios u ON u.email = v.em;

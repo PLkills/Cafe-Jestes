@@ -128,7 +128,7 @@ fieldset.bloco legend{font-weight:700;color:var(--marrom);padding:0 .4rem}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin:1rem 0}
 .kpi{background:#fff;border:1px solid #e7d9c5;border-radius:10px;padding:.8rem;font-size:.85rem;color:#7a6a58}
 .kpi span{display:block;font-size:1.3rem;font-weight:700;color:var(--marrom)}
-.barra{display:block;height:10px;background:var(--dourado);border-radius:5px;min-width:2px}
+.barra-rel{display:block;height:10px;background:var(--dourado);border-radius:5px;min-width:2px}
 .peq{font-size:.8rem;margin-left:.5rem}
 .so-print{display:none}
 @media print{
@@ -142,3 +142,51 @@ fieldset.bloco legend{font-weight:700;color:var(--marrom);padding:0 .4rem}
 .acoes{flex-wrap:wrap}
 .acoes .inline-form{flex-wrap:nowrap;gap:.5rem}
 .acoes input{width:150px;margin:0}
+
+/* ---- Dia 7: ajustes apos teste dos colegas ---- */
+.graos{display:inline-flex;gap:4px;vertical-align:middle;margin-left:.4rem}
+.graos i{width:14px;height:14px;border-radius:50%;background:#e5d8c8;display:block}
+.graos i.on{background:var(--marrom)}
+.nota-estrelas{border:0;padding:0;margin:.8rem 0 0}
+.nota-estrelas legend{font-weight:600;padding:0;margin-bottom:.2rem}
+.estr{display:flex;flex-direction:row-reverse;justify-content:flex-end}
+.estr input{position:absolute;opacity:0;width:1px;height:1px}
+.estr label{font-size:2.2rem;line-height:1;color:#d8c9b6;cursor:pointer;margin:0;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.estr input:checked + label,.estr input:checked ~ label,.estr label:hover,.estr label:hover ~ label{color:var(--dourado)}
+.estr input:focus-visible + label{outline:2px solid var(--marrom);border-radius:6px}
+.qtd{display:flex;align-items:center;gap:.3rem}
+.qtd input{width:64px;text-align:center}
+.qtd-btn{width:44px;min-height:44px;margin:0;padding:0;background:#fff;color:var(--marrom);border:1px solid var(--marrom);font-size:1.3rem}
+.qtd-btn:hover{background:#f1e6d8}
+.js .qtd .sec{display:none}
+.menu-btn,.cart-m{display:none}
+.menu-btn{width:auto;margin:0;background:transparent;border:1px solid #fff;padding:.5rem .8rem}
+.rodape-info{font-size:.85rem;line-height:1.7}
+.rodape a{color:var(--marrom)}
+.tabela-cards td.det a{display:inline-block}
+@media (hover:none){.mapa{pointer-events:none}}   /* no celular o mapa nao prende a rolagem; use o botao de rota */
+@media (max-width:700px){
+  .js .menu-btn,.cart-m{display:inline-flex;align-items:center;min-height:44px}
+  .cart-m{margin-left:auto;gap:.3rem}
+  .cart-d{display:none}
+  .js #menu-nav{display:none;width:100%;flex-direction:column}
+  .js #menu-nav.aberto{display:flex}
+  #menu-nav a{margin:0;padding:.8rem .3rem;min-height:44px;border-top:1px solid rgba(255,255,255,.15)}
+}
+@media (max-width:700px),(pointer:coarse){
+  button,.btn,.btn-link,select,input:not([type=radio]):not([type=checkbox]):not([type=hidden]){min-height:44px}
+  button.link,.tabela a,.limpar,.acoes a,.linha-item h2 a{display:inline-flex;align-items:center;min-height:44px;padding:0 .5rem}
+  button.link{padding:0 .5rem}
+}
+@media (max-width:640px){
+  .tabela-wrap:has(.tabela-cards){overflow:visible}
+  .tabela-cards{background:transparent;overflow:visible}
+  .tabela-cards thead{display:none}
+  .tabela-cards,.tabela-cards tbody,.tabela-cards tr,.tabela-cards td{display:block;width:100%}
+  .tabela-cards tr{background:#fff;border-radius:10px;margin:0 0 .8rem;padding:.6rem .8rem;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+  .tabela-cards td{display:flex;justify-content:space-between;align-items:center;gap:1rem;border:0;padding:.35rem 0;font-size:.95rem}
+  .tabela-cards td::before{content:attr(data-label);color:#7a6657;font-weight:600}
+  .tabela-cards td.det{display:block;padding-top:.6rem}
+  .tabela-cards td.det::before{content:none}
+  .tabela-cards td.det a{display:block;text-align:center;padding:.8rem}
+}

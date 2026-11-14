@@ -75,7 +75,8 @@ function config_loja(): array
     static $cfg = null;
     if ($cfg === null) {
         $padrao = ['taxa_entrega' => 6.00, 'frete_gratis_acima' => 80.00, 'max_por_item' => 10,
-                   'categorias_sem_personalizacao' => ['Graos']];
+                   'categorias_sem_personalizacao' => ['Graos'],
+                   'contato' => ['email' => '', 'whatsapp' => '', 'horario' => 'Todos os dias, das 8h às 20h']];
         $arq = __DIR__ . '/../../config/loja.php';
         $cfg = is_file($arq) ? array_merge($padrao, (array)(require $arq)) : $padrao;
     }
@@ -85,7 +86,30 @@ function config_loja(): array
 /** Graos em pacote nao tem leite/acucar: sem personalizacao. */
 function personalizavel(array $p): bool
 {
-    return !in_array($p['categoria'], config_loja()['categorias_sem_personalizacao'], true);
+    // compara sem acento/maiuscula: "Graos" e "Grãos" sao a mesma categoria
+    $sem = array_map('sem_acento', config_loja()['categorias_sem_personalizacao']);
+    return !in_array(sem_acento((string)($p['categoria'] ?? '')), $sem, true);
+}
+
+function sem_acento(string $s): string
+{
+    return strtr(mb_strtolower($s), ['á'=>'a','à'=>'a','â'=>'a','ã'=>'a','ä'=>'a','é'=>'e','ê'=>'e','è'=>'e',
+        'í'=>'i','ó'=>'o','ô'=>'o','õ'=>'o','ö'=>'o','ú'=>'u','ü'=>'u','ç'=>'c']);
+}
+
+/** Cafes puros (espresso, cold brew) vem sem leite por padrao; os demais, com leite integral. */
+function leite_padrao(array $p): string
+{
+    return in_array(sem_acento((string)($p['categoria'] ?? '')), ['espresso', 'gelados'], true) ? 'sem_leite' : 'integral';
+}
+
+/** Cinco "graos" para mostrar a intensidade de 1 a 5 (decorativo; o texto fica no aria-label). */
+function graos_intensidade(int $n): string
+{
+    $n = max(0, min(5, $n));
+    $h = '<span class="graos" role="img" aria-label="Intensidade ' . $n . ' de 5">';
+    for ($i = 1; $i <= 5; $i++) $h .= '<i class="' . ($i <= $n ? 'on' : '') . '"></i>';
+    return $h . '</span>';
 }
 
 // ---- Pedidos / pagamento ----
