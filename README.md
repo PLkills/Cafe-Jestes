@@ -5,7 +5,7 @@ PHP 8 + MySQL, padrao MVC.
 1. Importe `sql/schema.sql` (phpMyAdmin ou `mysql -u root < sql/schema.sql`).
 2. Copie `config/database.example.php` para `config/database.php` e ajuste.
 3. Aponte o servidor para `public/` (ou `php -S localhost:8000 -t public`).
-4. Usuarios de teste (senha `senha123`): admin@, gerente@, barista@, entregador@, cliente@cafeteria.com
+4. Usuarios de teste (senha XXX): admin@, gerente@, barista@, entregador@, cliente@cafeteria.com
 
 ## Dia 2
 Importe tambem `sql/dia2_avaliacoes.sql` (nao apaga dados). Rotas novas:
@@ -29,7 +29,7 @@ do cartao guarda-se apenas os 4 ultimos digitos. A biblioteca `public/js/qrcode.
 - **Cliente** (`?r=pedido/ver&id=N`): linha do tempo do pedido, atualizada a cada 30 s (`pedido/status` em JSON); avaliacao da entrega (1-5) apos entregue.
 - Transicoes sao atomicas (UPDATE condicionado ao status anterior) e notificam o cliente.
 - Nao ha alteracao de banco neste dia (usa colunas ja existentes de `entregas`).
-- Contas de teste (senha `senha123`, trocar antes de divulgar): barista@, entregador@, entregador2@, gerente@cafeteria.com
+- Contas de teste (senha XXX, trocar antes de divulgar): barista@, entregador@, entregador2@, gerente@cafeteria.com
 
 ## Dia 6 - Administracao, relatorios e backup
 - **Usuarios** (`?r=adminusuario/index`, gerente/administrador): lista com busca e filtro por perfil, criar conta (entregador, barista etc.), desativar/reativar e redefinir senha. Gerente nao altera gerente/administrador; ninguem desativa a propria conta. Conta desativada perde a sessao na hora.
