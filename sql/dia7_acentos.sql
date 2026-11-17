@@ -1,6 +1,7 @@
 -- Dia 7: corrige os textos sem acento que ja estao no banco do site.
 -- Execute no phpMyAdmin (aba SQL). Nao apaga pedidos nem contas; so ajusta textos.
 -- Cada comando procura o texto antigo, entao pode ser executado mais de uma vez.
+USE cafejester;
 SET NAMES utf8mb4;
 
 UPDATE categorias SET nome = 'Grãos' WHERE nome = 'Graos';
